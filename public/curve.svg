@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="1920px" height="1080px" viewBox="0 0 1920 1080" enable-background="new 0 0 1920 1080" xml:space="preserve">
+<g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-18" y1="134.332" x2="1939.0005" y2="134.332">
+		<stop offset="0" style="stop-color:#F5F5F5"/>
+		<stop offset="0.7527" style="stop-color:#E0E0E0"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M181,207.013c-90.606-14.693-199-22.945-199-22.945V-10l1957,0v201.433   c-132.758,11.666-226-45.041-479-34.277c-152.865,6.504-362.504,62.166-363.018,62.296c-30.328,8.1-101.795,29.552-222.182,46.638   C740.082,283.808,606,284.347,461,257.719C339.592,235.424,319,229.392,181,207.013z"/>
+</g>
+</svg>
