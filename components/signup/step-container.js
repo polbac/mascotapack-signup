@@ -1,10 +1,15 @@
 
 import Step1 from './step1'
+import Step2 from './step2'
 import { useStepNumber } from '../../hooks/signupStateForm'
 
 function StepContainer() {
     const { stepNumber } = useStepNumber()
-    if (stepNumber === 1) return (<Step1 />)
+    const steps = [
+        <Step1 />,
+        <Step2 />,
+    ]
+    return steps[stepNumber - 1]
 
 }
 

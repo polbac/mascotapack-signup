@@ -63,6 +63,15 @@ export function usePets() {
     return { addPet, pets, petUUIDs, savePets, removePet, getPetByUUID, arAllFullfilled, validate }
 }
 
+export function usePersonalInformation() {
+    const { name, setName, email, setEmail } = useContext(SignupState)
+    
+    const validate = () => {}
+    const arAllFullfilled = () => {}
+
+    return { name, setName, email, setEmail, validate, arAllFullfilled}
+}
+
 export function useStepNumber() {
     const { stepNumber, setStepNumber } = useContext(SignupState)
 

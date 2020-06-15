@@ -129,7 +129,7 @@ export default class Pet {
 
     validate() {
         this.errors = {
-            name: this.isNameValid()
+            name: !this.isNameValid()
         }
     }
 
