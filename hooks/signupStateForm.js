@@ -10,12 +10,19 @@ function getUniqueId() {
 
 export function usePets() {
     const { pets, petUUIDs, setPetUUIDs, setPets } = useContext(SignupState)
-    
+    const { next } = useStepNumber()
+
     const addPet = () => { 
         const uuid = getUniqueId()
+        const newPet = new Pet(uuid)
         setPetUUIDs(currentPetUUIDs => produce(currentPetUUIDs, v => {
             v.push(uuid)
         }))
+        setPets(currentPets => produce(currentPets, v => ({
+            ...pets,
+            [uuid]: newPet
+        })))
+        
     }
 
     const savePets = (newPet) => {
@@ -29,12 +36,43 @@ export function usePets() {
         return pets[uuid] || new Pet(uuid)
     }
 
-    const removePet = () => {}
+    const removePet = (uuid) => {
+        setPetUUIDs(currentPetUUIDs => produce(currentPetUUIDs, v => {
+            return v.filter(_uuid => _uuid !== uuid)
+        }))
+        setPets(currentPets => produce(currentPets, v => {
+            delete v[uuid]
+        }))
+    }
 
-    return { addPet, pets, petUUIDs, savePets, removePet, getPetByUUID }
+    const arAllFullfilled = () => {
+        return Object.keys(pets).reduce((acc, uuid) => {
+            const p = pets[uuid]
+            return p.isFullfilled() && acc
+        }, true) && Object.keys(pets).length !== 0
+    }
+
+    const validate = () => {
+        petUUIDs.forEach(uuid => pets[uuid].validate())
+        
+        if (arAllFullfilled()) {
+            next()
+        }
+    }
+
+    return { addPet, pets, petUUIDs, savePets, removePet, getPetByUUID, arAllFullfilled, validate }
 }
 
 export function useStepNumber() {
     const { stepNumber, setStepNumber } = useContext(SignupState)
-    return { stepNumber, setStepNumber }
+
+    const next = () => {
+        setStepNumber(stepNumber + 1)
+    }
+
+    const prev = () => {
+        setStepNumber(stepNumber - 1)
+    }
+
+    return { stepNumber, next, prev }
 }

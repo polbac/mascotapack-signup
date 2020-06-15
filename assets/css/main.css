@@ -29,7 +29,7 @@ h1 img{
 h3 {
     font-weight: 800;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-bottom: 50px;
     width: 100%;
     color: #3d6afd;
@@ -61,10 +61,16 @@ h3 {
     border-right: 1px solid #3d6afd;
 }
 
+.add-other{
+    margin-bottom: 50px;
+}
+
 .action-buttons{
-    border-top: 1px solid #ccc;
-    margin-top: 70px;
     padding-top: 20px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
 }
 
 
@@ -73,7 +79,53 @@ h3 {
     margin: auto;
     margin-bottom: 50px;
     border: 1px solid #d8d8f5;
-    padding: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 40px;
     box-shadow: 6px 0px 17px #ccc;
     border-radius: 3px;
+    text-align: left;
+}
+
+.pet-input label{
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+.pet-icon{
+    width: 50px;
+    margin: 10px;
+    
+}
+
+.pet-selector{
+    display: inline-block;
+    cursor: pointer;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin: 20px;
+}
+
+.pet-selector.active{
+    color: #3d6afd;
+    cursor: default;
+}
+
+.semi-transparent{
+    filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale"); /* Firefox 10+, Firefox on Android */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+    opacity: 0.5;
+}
+
+.start-now{
+    background-image: url(/start1.png);
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.start-now button{
+    margin-top: 150px;
+    margin-bottom: 150px;
 }
