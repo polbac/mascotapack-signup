@@ -1,18 +1,20 @@
 import { createContext, useState } from 'react'
 
-const initState = { 
-    stepNumber: 1,
-    name: '',
-    email: '',
-    cellphone: '',
-    pets: [],
-}
-const SignupStateContext = createContext(initState)
+const SignupStateContext = createContext({})
 
 export function SignupStateContextProvider({children}) {
-    const [formState, setState] = useState(initState)
+    const [stepNumber, setStepNumber] = useState(1)
+    const [petUUIDs, setPetUUIDs] = useState([])
+    const [pets, setPets] = useState({})
     
-    return <SignupStateContext.Provider value={{formState, setState}}>
+    return <SignupStateContext.Provider value={{
+        stepNumber,
+        setStepNumber,
+        petUUIDs,
+        setPetUUIDs,
+        pets,
+        setPets
+    }}>
         {children}
     </SignupStateContext.Provider>
 }

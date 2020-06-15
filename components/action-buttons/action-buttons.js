@@ -3,12 +3,13 @@ import {
   } from "reactstrap";
 
 function ActionButtons({nextActive, showPrev}) {
-    const prev = showPrev || true
+
+    const prev = showPrev && true
     return (
-        <div className="text-center">
+        <div className="text-center action-buttons">
             {prev && <Button color="#3d6afd" outline type="button">Volver</Button>}
 
-            <Button color="#3d6afd" outline type="button">
+            <Button color="default" type="button" disabled>
                 Siguiente
             </Button>
         </div>

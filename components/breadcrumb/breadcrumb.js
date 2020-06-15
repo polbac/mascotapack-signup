@@ -1,4 +1,4 @@
-import { useSignupStateForm } from '../../hooks/signupStateForm'
+import { useStepNumber } from '../../hooks/signupStateForm'
 
 function isComplete(current, stepNumber) {
     return current <= stepNumber
@@ -9,11 +9,11 @@ const steps = ['Armá tu pack', 'Datos personales', 'Envío', 'Pago', 'Listo!']
 function BreadcrumbStep(text, stepNumber, active) {
     const className = `step ${stepNumber <= active ? 'complete' : ''}`
 
-    return <div className={className}>{text}</div>
+    return <div key={`step-${stepNumber}`} className={className}>{text}</div>
 }
 
 function Breadcrumb() {
-    const { stepNumber } = useSignupStateForm()
+    const { stepNumber } = useStepNumber()
 
     return (
         <div className='breadcrumb'>

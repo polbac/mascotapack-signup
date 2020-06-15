@@ -1,20 +1,14 @@
-import dynamic from "next/dynamic"
-import { Container } from "reactstrap";
-import { useSignupStateForm } from '../../hooks/signupStateForm'
-import Breadcrumb from '../breadcrumb/breadcrumb'
 
-function stepFactory(step) {
-    return dynamic(import(`./step${step}`))
-}
+import { Container } from "reactstrap";
+import Breadcrumb from '../breadcrumb/breadcrumb'
+import StepContainer from './step-container'
 
 export default () => {
-    const { stepNumber } = useSignupStateForm()
-    const Step = stepFactory(stepNumber)
-
+    console.log('form')
     return (
         <Container>
-            <Breadcrumb />
-            <Step />
+            <Breadcrumb key="breadcrumb" />
+            <StepContainer />
         </Container>
     )
 }
