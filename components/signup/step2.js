@@ -1,75 +1,64 @@
 import {
     Row,
     Col,
-    Button,
-    FormGroup,
-    Form,
-    Input
+    Container
   } from "reactstrap";
 import ActionButtons from '../action-buttons/action-buttons'
 import { usePersonalInformation, useStepNumber } from '../../hooks/signupStateForm'
+import { useApi } from "../../hooks/ueApi";
 
 export default function Step2() {
-    const { person, setPerson, validate } = usePersonalInformation()
+    const { loading, error, data } = useApi()
     const { prev } = useStepNumber()
-    
+
     return (
-        <Form>
+        <>
             <Row>
-            <h3>¡Conozcámonos!</h3>
+            <h3>¡Tu pack!</h3>
             </Row>
 
             
             
             <div className="text-center box-step box-step-2">
-            <p>Pasanos tus datos para que podamos contactarnos:</p>
-                <FormGroup className={`form-control-alternative ${person.getErrors().name ? 'has-danger' : ''}`} >
-                    <Row>
-                        <Input
-                            id="name"
-                            key="name"
-                            placeholder="Tu nombre y apellido"
-                            type="text"
-                            defaultValue={person.getName()}
-                            onChange={e => setPerson(person.setName(e.currentTarget.value))}
-                        />
+        
+          {loading ?
+            (<div className='loading-dog'>
+                <img src='/doganimation.gif' width="250"/><br/><br/><br/>
+                buscando el pack que más se ajuste a tus mascotas...
+            </div>)
+            :
+            (<div>
+                <h4 className='pack-title'>Este pack te va a rendir <u>1</u> mes<br/>y contiene los siguiente productos:</h4>
+                <Container>
+                {data.items.map(({item_name, price, photo}) => (
+                    <>
+                    <Row className="align-items-baseline">
+                      <Col>
+                      <img className="img-fluid rounded shadow" width='70' src={photo}/>
+                      </Col>
+                      <Col >
+                        <p className='pack-name'>{item_name}</p>
+                      </Col>
+                      <Col >
+                      <p className='pack-price'>$ {price}</p>
+                      </Col>
                     </Row>
+                    <br/>
+                    <br/>
+                    </>
                     
-                    
-                </FormGroup>
-
-                <FormGroup className={`form-control-alternative ${person.getErrors().email ? 'has-danger' : ''}`} >
-                    <Row>
-                        <Input
-                            id="email"
-                            key="email"
-                            placeholder="Tu email"
-                            type="text"
-                            defaultValue={person.getEmail()}
-                            onChange={e => setPerson(person.setEmail(e.currentTarget.value))}
-                        />
-                    </Row>
-                </FormGroup>
-
-                <FormGroup className={`form-control-alternative ${person.getErrors().phone ? 'has-danger' : ''}`} >
-                    <Row>
-                        <Input
-                            error
-                            id="phone"
-                            key="phone"
-                            placeholder="Tu celular"
-                            type="text"
-                            defaultValue={person.getPhone()}
-                            onChange={e => setPerson(person.setPhone(e.currentTarget.value))}
-                        />
-                    </Row>
-                </FormGroup>
+                ))}
+                </Container>
+                
+                <div className='total-price text-center'>Total: $ {data.total}</div>
+                
+            </div>)
+        }
+            
             </div>
 
+            <ActionButtons showPrev={true} prevAction={prev} nextActive={!loading} nextAction={() => {}} />
           
-            <ActionButtons showPrev={true} prevAction={prev} nextActive={person.areAllFullfilled()} nextAction={validate} />
-
-          
-        </Form>
+        </>
     )
 }

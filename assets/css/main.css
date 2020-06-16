@@ -19,10 +19,58 @@ h1 span {
     font-weight: 700;
 }
 
+.pack-title{
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 100%;
+    color: #3d6afd;
+    font-size: 16px;
+}
+
+.pack-title u{
+    color: white;
+    background: #3d6afd;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.loading-dog{
+    font-weight: 700;
+    text-align: center;
+    color: #3d6afd;
+    font-size: 18px;
+}
+
+.total-price{
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    color: #3d6afd;
+    font-size: 18px;
+}
+
+.pack-name{
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.pack-price{
+    font-weight: 700;
+    font-size: 14px;
+}
+
 h1 img{
     width: 20px;
     margin-right: 5px;
     margin-top: -2px;
+    
 }
 
 
@@ -87,7 +135,7 @@ h3 {
     text-align: left;
 }
 
-.pet-input label{
+.box-step label{
     margin-right: 15px;
     margin-top: 15px;
 }
