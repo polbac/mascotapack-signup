@@ -3,7 +3,7 @@ import Person from '../schema/Person'
 const SignupStateContext = createContext({})
 
 export function SignupStateContextProvider({children}) {
-    const [stepNumber, setStepNumber] = useState(1)
+    const [stepNumber, setStepNumber] = useState(2)
     const [petUUIDs, setPetUUIDs] = useState([])
     const [pets, setPets] = useState({})
     const [person, setPerson] = useState(new Person())
@@ -15,10 +15,8 @@ export function SignupStateContextProvider({children}) {
         setPetUUIDs,
         pets,
         setPets,
-        name,
-        setName,
-        email,
-        setEmail
+        person,
+        setPerson
     }}>
         {children}
     </SignupStateContext.Provider>

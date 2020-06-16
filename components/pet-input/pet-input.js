@@ -8,7 +8,7 @@ function PetInput({ uuid }) {
     const pet = getPetByUUID(uuid)
 
     return (
-        <div className='pet-input'>
+        <div className='box-step'>
             
             <div class='text-center'>  
                 

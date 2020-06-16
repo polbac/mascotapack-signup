@@ -74,7 +74,7 @@ h3 {
 }
 
 
-.pet-input{
+.box-step{
     max-width: 640px;
     margin: auto;
     margin-bottom: 50px;
@@ -128,4 +128,8 @@ h3 {
 .start-now button{
     margin-top: 150px;
     margin-bottom: 150px;
+}
+
+.box-step-2{
+    padding-top: 50px;
 }

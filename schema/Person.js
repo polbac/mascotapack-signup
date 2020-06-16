@@ -1,3 +1,5 @@
+import emailValidator from 'email-validator'
+
 export default class Pet {
     name = ''
     email = ''
@@ -11,8 +13,8 @@ export default class Pet {
 
     constructor(name = '', email = '', phone = '') {
         this.name = name
-        this.email = type
-        this.phone = size
+        this.email = email
+        this.phone = phone
     }
 
     getName() {
@@ -50,9 +52,15 @@ export default class Pet {
         return this.getName().length >= 2
     }
 
+    isEmailValid() {
+        return emailValidator.validate(this.email)
+    }
+
     validate() {
         this.errors = {
-            name: !this.isNameValid()
+            name: !this.isNameValid(),
+            email: !this.isEmailValid(),
+            phone: !this.isNameValid(),
         }
     }
 
@@ -63,4 +71,11 @@ export default class Pet {
     getAsString(value) {
         return value === null ? '' : value
     }
+
+    areAllFullfilled() {
+        return !this.errors.name &&
+            !this.errors.email &&
+            !this.errors.phone
+    }
+
 }
