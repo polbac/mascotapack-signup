@@ -4,7 +4,7 @@ function isComplete(current, stepNumber) {
     return current <= stepNumber
 }
 
-const steps = ['Mascotas', 'Tu Pack', 'Datos Personales', 'Pago', 'Listo!']
+const steps = ['Mascotas', 'Tu Pack', 'Datos Personales', 'Envío', 'Pago']
 
 function BreadcrumbStep(text, stepNumber, active) {
     const className = `step ${stepNumber <= active ? 'complete' : ''}`

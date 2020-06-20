@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react'
 import Person from '../schema/Person'
+import Delivery from '../schema/Delivery'
 const SignupStateContext = createContext({})
 
 export function SignupStateContextProvider({children}) {
@@ -7,6 +8,7 @@ export function SignupStateContextProvider({children}) {
     const [petUUIDs, setPetUUIDs] = useState([])
     const [pets, setPets] = useState({})
     const [person, setPerson] = useState(new Person())
+    const [delivery, setDelivery] = useState(new Delivery())
     
     return <SignupStateContext.Provider value={{
         stepNumber,
@@ -16,7 +18,9 @@ export function SignupStateContextProvider({children}) {
         pets,
         setPets,
         person,
-        setPerson
+        setPerson,
+        delivery,
+        setDelivery
     }}>
         {children}
     </SignupStateContext.Provider>

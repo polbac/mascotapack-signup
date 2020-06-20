@@ -2,7 +2,7 @@ html,body{
     font-family: 'Poppins', helvetica, arial, sans-serif;
     background: url(/curve.svg) center;
     min-height: 100vh;
-    background-size: contain;
+    background-size: 100%;
     background-position: top center;
     background-repeat: no-repeat;
 }
@@ -121,8 +121,41 @@ h3 {
 
 }
 
+.dropdown{
+    display: block;
+}
+
+.dropdown button{
+    display: block;
+    width: 100%;
+    background: white;
+    font-weight: normal;
+    color: #827f7f;
+}
+
+
+.alert{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    padding-top: 0;
+    text-transform: uppercase;
+}
+
+.alert i{
+    font-size: 20px;
+    position: relative;
+    top: 5px;
+}
 
 .box-step{
+    position: relative;
     max-width: 640px;
     margin: auto;
     margin-bottom: 50px;
@@ -180,4 +213,13 @@ h3 {
 
 .box-step-2{
     padding-top: 50px;
+}
+
+.delivery-only{
+    background: #98a4ab;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #ffffff;
 }

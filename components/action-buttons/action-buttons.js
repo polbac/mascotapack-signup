@@ -2,16 +2,16 @@ import {
     Button
   } from "reactstrap";
 
-function ActionButtons({nextActive, showPrev, nextAction, prevAction}) {
+function ActionButtons({nextActive, showPrev, nextAction, prevAction, nextDisabled}) {
 
     const prev = showPrev && true
     return (
         <div className="text-center action-buttons">
             {prev && <Button color="#3d6afd" outline type="button" onClick={prevAction}>Volver</Button>}
 
-            <Button onClick={nextAction} color="primary" type="button" disabled={!nextActive}>
+            {(!nextDisabled) && <Button onClick={nextAction} color="primary" type="button" disabled={!nextActive}>
                 Siguiente
-            </Button>
+            </Button>}
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import SignupState from '../context/SignupState'
-import { useContext } from 'react'
+import { useContext, useCallback } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import Pet from '../schema/Pet'
 import { produce } from 'immer'
@@ -65,9 +65,32 @@ export function usePets() {
 
 export function usePersonalInformation() {
     const { person, setPerson } = useContext(SignupState)
-    const validate = () => {}
+    const { next } = useStepNumber()
+
+    const validate = () => {
+        setPerson(person.validate())
+        if (person.isValid()) {
+            next()
+        }
+    }
+
     return { person, setPerson, validate }
 }
+
+export function useDeliveryInformation() {
+    const { delivery, setDelivery } = useContext(SignupState)
+    const { next } = useStepNumber()
+
+    const validate = () => {
+        setDelivery(delivery.validate())
+        if (delivery.isValid()) {
+            next()
+        }
+    }
+
+    return { delivery, setDelivery, validate }
+}
+
 
 export function useStepNumber() {
     const { stepNumber, setStepNumber } = useContext(SignupState)

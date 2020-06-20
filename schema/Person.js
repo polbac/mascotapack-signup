@@ -1,17 +1,16 @@
 import emailValidator from 'email-validator'
 
-export default class Pet {
+import SchemaBase from './SchemaBase'
+
+export default class Person extends SchemaBase{
     name = ''
     email = ''
     phone = ''
 
-    errors = {
-        name: false,
-        email: false,
-        phone: false,
-    }
+    errors = {}
 
     constructor(name = '', email = '', phone = '') {
+        super()
         this.name = name
         this.email = email
         this.phone = phone
@@ -23,7 +22,7 @@ export default class Pet {
 
     setName(name) {
         this.name = name
-        return this
+        return this.returnNew(this)
     }
 
     getEmail() {
@@ -32,7 +31,7 @@ export default class Pet {
 
     setEmail(email) {
         this.email = email
-        return this
+        return this.returnNew(this)
     }
 
     getPhone() {
@@ -41,11 +40,7 @@ export default class Pet {
 
     setPhone(phone) {
         this.phone = phone
-        return this
-    }
-
-    isFullfilled() {
-        return this.isNameValid()
+        return this.returnNew(this)
     }
 
     isNameValid() {
@@ -56,26 +51,37 @@ export default class Pet {
         return emailValidator.validate(this.email)
     }
 
+    isValid() {
+        return this.isNameValid() &&
+            this.isEmailValid() &&
+            this.isPhoneValid()
+    }
+
+    isPhoneValid() {
+        console.log(this.getPhone().match(/\d/g))
+        if (this.getPhone().match(/\d/g) === null) return false
+        return this.getPhone().match(/\d/g).length===10;
+
+    }
+
     validate() {
         this.errors = {
             name: !this.isNameValid(),
             email: !this.isEmailValid(),
-            phone: !this.isNameValid(),
+            phone: !this.isPhoneValid(),
         }
+        return this.returnNew(this)
     }
 
     getErrors() {
         return this.errors
     }
 
-    getAsString(value) {
-        return value === null ? '' : value
+    isFullfilled() {
+        return this.name !== '' &&
+            this.email  !== '' &&
+            this.phone  !== ''
     }
 
-    areAllFullfilled() {
-        return !this.errors.name &&
-            !this.errors.email &&
-            !this.errors.phone
-    }
 
 }

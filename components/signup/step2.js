@@ -9,7 +9,7 @@ import { useApi } from "../../hooks/ueApi";
 
 export default function Step2() {
     const { loading, error, data } = useApi()
-    const { prev } = useStepNumber()
+    const { prev, next } = useStepNumber()
 
     return (
         <>
@@ -57,7 +57,7 @@ export default function Step2() {
             
             </div>
 
-            <ActionButtons showPrev={true} prevAction={prev} nextActive={!loading} nextAction={() => {}} />
+            <ActionButtons showPrev={true} prevAction={prev} nextActive={!loading} nextAction={next} />
           
         </>
     )
