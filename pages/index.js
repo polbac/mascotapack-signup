@@ -1,11 +1,11 @@
-import Signup from '../components/signup/form'
-import Logo from '../components/logo/logo'
+import Benefits from '../components/benefits/benefits'
+import Hero from '../components/hero/hero'
 
-const Home = () => (  
-  <div>
-    <Logo/>
-    <Signup />
-  </div>
+const LandingPage = () => (  
+  <>
+    <Hero />
+    <Benefits />
+  </>
 )
 
-export default Home
+export default LandingPage
