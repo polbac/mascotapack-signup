@@ -54,7 +54,7 @@ export default function Header() {
                                     <NavItem>
                                         <NavLink>
                                             <Link href="/comenzar">
-                                                <a color="primary">COMENZAR</a>
+                                                <a className="btn btn-primary">COMENZAR</a>
                                             </Link>
                                         </NavLink>
                                     </NavItem>
