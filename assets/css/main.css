@@ -232,7 +232,39 @@ h3 {
     color: #ffffff;
 }
 
+.navbar-toggler{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #f19494;
+}
+
+.navbar-toggler img{
+    margin-left: -3px;
+    margin-top: -2px;
+    width: 20px;
+    height: 20px;
+}
+
+
 @media (max-width: 640px){
+    .navbar{
+        background: white;
+        height: 80px;
+        padding-top: 0;
+    }
+
+    .hero .btn{
+        font-size: 20px;
+    }
+
+    .navbar-brand{
+        position: fixed;
+        top: 20px;
+    }
+
     .breadcrumb{
         background: white;
         position: fixed;
@@ -356,4 +388,13 @@ h3 {
     font-size: 56px;
     line-height: 48px;
     margin-bottom: 42px;
+}
+
+a:hover{
+    text-decoration: none;
+    color: gray;
+}
+
+.navbar a{
+    font-family: Poppins,sans-serif;
 }

@@ -1,7 +1,8 @@
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button, Container, Row, Col } from 'reactstrap'
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Container, Row, Col } from 'reactstrap'
 import Link from 'next/link'
 import { useScrollYPosition } from 'react-use-scroll-position';
 import { useRouter } from 'next/router'
+
 
 export default function Header() {
     const [navOpen, setNavOpen] = React.useState(false)
@@ -17,14 +18,17 @@ export default function Header() {
     }
 
     return (
-        <Navbar expand="lg" light className={`fixed-top` }>
+        <header>
+            <Navbar expand="lg" light className={`fixed-top` }>
             <Container>
                 
                     <Col xs="2" >
                         <NavbarBrand href="/"><span>mascotapack  </span></NavbarBrand>
                     </Col>
                     <Col xs="10">
-                        <NavbarToggler aria-label="Toggle navigation" onClick={() => setNavOpen(!navOpen)} ><i className="fa fa-bars" /></NavbarToggler>
+                        <NavbarToggler aria-label="Toggle navigation" onClick={() => setNavOpen(!navOpen)} >
+                            <img src="/menu.svg" width="20" />
+                        </NavbarToggler>
                 
                     
                         <Collapse navbar isOpen={navOpen}>
@@ -54,7 +58,7 @@ export default function Header() {
                                     <NavItem>
                                         <NavLink>
                                             <Link href="/comenzar">
-                                                <a className="btn btn-primary">COMENZAR</a>
+                                                <a className="btn btn-primary rounded-xl">COMENZAR</a>
                                             </Link>
                                         </NavLink>
                                     </NavItem>
@@ -65,5 +69,6 @@ export default function Header() {
                 
             </Container>
         </Navbar>
+        </header>
     )
 }
