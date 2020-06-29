@@ -30,7 +30,7 @@ export default function MyApp({ Component, pageProps }) {
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
                     gtag('js', new Date());
-                    gtag('config', '[Tracking ID]');
+                    gtag('config', 'UA-171124637-1');
                 `,
             }}
           />
