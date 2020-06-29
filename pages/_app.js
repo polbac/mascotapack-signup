@@ -12,12 +12,28 @@ import Header from "../components/header/header"
 import Whatsapp from "../components/whatsapp/whatsapp"
 import Footer from "../components/footer/footer"
 
+
 export default function MyApp({ Component, pageProps }) {
     return (
       <SignupStateContextProvider>
         <Head>
           <title>mascotapack</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-171124637-1"
+          />
+
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '[Tracking ID]');
+                `,
+            }}
+          />
         </Head>
         <Header />
         <Component {...pageProps} />
