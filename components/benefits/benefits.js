@@ -27,9 +27,9 @@ export default function Benefits() {
               <div className="icon-rounded bg-primary-light mb-3">
                 <Svg size={40} icon="diamond-1" />
               </div>
-              <h3 className="h5">Mejores marcas</h3>
+              <h3 className="h5">Sin salir de tu casa</h3>
               <p className="text-muted">
-                Sólo queremos lo mejor para tus mascotas.
+                En estos tiempos nos preocupamos para que puedas cuidarte.
               </p>
             </div>
           </div>

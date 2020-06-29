@@ -5,7 +5,7 @@ export default function Hero() {
   
   return (
     
-      <div class="hero">
+      <div className="hero">
         <div className="content">
           <p>vos encargate de amarlos</p>
           <h2 className="display-4 font-weight-bold text-shadow">nosotros nos<br/>encargamos del resto</h2>
