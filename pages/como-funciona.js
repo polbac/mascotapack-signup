@@ -2,7 +2,7 @@ import Svg from '../components/svg/svg'
 
 const HowPage = () => (
   <main>
-    <section className="py-6">
+    <section className="py-7 how-work">
       <div className="container">
       <h2 className="mb-5 text-center">Cómo funciona</h2>
         <div className="py-4">

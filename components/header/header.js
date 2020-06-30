@@ -8,22 +8,32 @@ export default function Header() {
     const [navOpen, setNavOpen] = React.useState(false)
     const scrollY = useScrollYPosition();
     const router = useRouter()
-    let showButton = true
+    let showButton = false
     const isHome = router.route === '/'
 
-    let isWhite = false
-    if (process.browser && isHome) {
-        showButton = scrollY > window.innerHeight
-        isWhite = !showButton
+    let isWhite = true
+
+    if (process.browser) {
+        if (isHome) {
+            showButton = scrollY > window.innerHeight
+            isWhite = !showButton
+        } else {
+            isWhite = true
+        }
+        
+        if (!isHome) {
+            showButton = true
+            isWhite = false
+        }
     }
 
     return (
         <header>
-            <Navbar expand="lg" light className={`fixed-top` }>
+            <Navbar style={{ background: showButton ? 'white' : 'transparent'}} expand="lg" light className={`fixed-top` }>
             <Container>
                 
                     <Col xs="2" >
-                        <NavbarBrand href="/"><span>mascotapack  </span></NavbarBrand>
+                        <NavbarBrand href="/"><span>mascotapack  <img src="/logo.svg" /></span></NavbarBrand>
                     </Col>
                     <Col xs="10">
                         <NavbarToggler aria-label="Toggle navigation" onClick={() => setNavOpen(!navOpen)} >
@@ -36,21 +46,21 @@ export default function Header() {
                                 <NavItem>
                                     <NavLink>
                                         <Link href="/">
-                                            <a className={isWhite ? 'text-dark' : ''}>HOME</a>
+                                            <a className={isWhite ? 'text-white' : ''}>HOME</a>
                                         </Link>
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink>
                                         <Link href="/como-funciona">
-                                            <a className={isWhite ? 'text-dark' : ''}>CÓMO FUNCIONA</a>
+                                            <a className={isWhite ? 'text-white' : ''}>CÓMO FUNCIONA</a>
                                         </Link>
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
                                 <NavLink>
-                                        <Link href="/acerca">
-                                            <a className={isWhite ? 'text-dark' : ''}>ZONAS DE ENTREGA</a>
+                                        <Link href="/zonas-de-entrega">
+                                            <a className={isWhite ? 'text-white' : ''}>ZONAS DE ENTREGA</a>
                                         </Link>
                                     </NavLink>
                                 </NavItem>

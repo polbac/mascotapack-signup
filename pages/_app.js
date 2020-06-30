@@ -1,5 +1,12 @@
 import { SignupStateContextProvider } from '../context/SignupState'
 import Head from 'next/head'
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+import Router from 'next/router';
+
+Router.events.on('routeChangeStart', () => NProgress.start()); 
+Router.events.on('routeChangeComplete', () => NProgress.done()); 
+Router.events.on('routeChangeError', () => NProgress.done());
 
 import "../assets/css/argon-design-system-react.css";
 import "../assets/directory/css/custom.css"
