@@ -1,15 +1,14 @@
-import Benefits from '../components/benefits/benefits'
-import Hero from '../components/hero/hero'
-import PackDescription from '../components/pack-description/pack-description'
-import Testimonials from '../components/testimonials/testimonials'
 
-const LandingPage = () => (  
-  <>
-    <Hero />
-    <Benefits />
-    <PackDescription />
-    <Testimonials />
-  </>
+
+const SoonPage = () => (  
+  <div className='comming'>
+      <div className="brand">
+        
+        <h2>mascotapack <img src="/logo.png" width="40" /></h2> 
+        <br/>
+        <p>Próximamente un nuevo concepto<br/>en el mundo de las mascotas</p>  
+      </div> 
+  </div>
 )
 
-export default LandingPage
+export default SoonPage

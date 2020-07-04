@@ -2,38 +2,53 @@ import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Co
 import Link from 'next/link'
 import { useScrollYPosition } from 'react-use-scroll-position';
 import { useRouter } from 'next/router'
+import classnames from 'classnames'
+import { useLayoutEffect, useState } from 'react';
 
+function getScrollPosition() {
+    if (!process.browser) return { x: 0, y: 0 }
+    return { x: window.scrollX, y: window.scrollY }
+}
 
 export default function Header() {
     const [navOpen, setNavOpen] = React.useState(false)
-    const scrollY = useScrollYPosition();
-    const router = useRouter()
-    let showButton = false
-    const isHome = router.route === '/'
-
-    let isWhite = true
-
+    let router = useRouter()
+    let isHome = router.route === '/home'
+    let isSignup = router.route === '/comenzar'
+    const [showButton, setShowButton] = useState(!isHome && !isSignup)
+    const [isWhite, setIsWhite] = useState(!isHome)
+    
     if (process.browser) {
-        if (isHome) {
-            showButton = scrollY > window.innerHeight
-            isWhite = !showButton
-        } else {
-            isWhite = true
-        }
-        
-        if (!isHome) {
-            showButton = true
-            isWhite = false
-        }
+        useLayoutEffect(() => {
+            const handleScroll = () => {
+                const scrollY = getScrollPosition().y
+                isHome = document.location.pathname === '/home'
+                isSignup = document.location.pathname === '/comenzar'
+                if (isHome) {
+                    setShowButton(scrollY > window.innerHeight)
+                    setIsWhite(scrollY > window.innerHeight)
+                } else {
+                    setIsWhite(true)
+                    setShowButton(!isSignup)
+                }
+            }
+            window.addEventListener('popstate', handleScroll);
+            window.addEventListener('scroll', handleScroll)
+            setInterval(handleScroll, 500)
+            return () => window.removeEventListener('scroll', handleScroll)
+            }, [])
     }
 
     return (
         <header>
-            <Navbar style={{ background: showButton ? 'white' : 'transparent'}} expand="lg" light className={`fixed-top` }>
+            <Navbar expand="lg" className={classnames({
+                'fixed-top': true,
+                'white': isWhite
+            })}>
             <Container>
                 
                     <Col xs="2" >
-                        <NavbarBrand href="/"><span>mascotapack  <img src="/logo.svg" /></span></NavbarBrand>
+                        <NavbarBrand href="/"><span>mascotapack  <img src={isWhite ? "/logo.png" : "/logo_black.png"} /></span></NavbarBrand>
                     </Col>
                     <Col xs="10">
                         <NavbarToggler aria-label="Toggle navigation" onClick={() => setNavOpen(!navOpen)} >
@@ -45,22 +60,22 @@ export default function Header() {
                             <Nav navbar className={`mr-auto`}>
                                 <NavItem>
                                     <NavLink>
-                                        <Link href="/">
-                                            <a className={isWhite ? 'text-white' : ''}>HOME</a>
+                                        <Link href="/home">
+                                            <a >HOME</a>
                                         </Link>
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink>
                                         <Link href="/como-funciona">
-                                            <a className={isWhite ? 'text-white' : ''}>CÓMO FUNCIONA</a>
+                                            <a >CÓMO FUNCIONA</a>
                                         </Link>
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
                                 <NavLink>
                                         <Link href="/zonas-de-entrega">
-                                            <a className={isWhite ? 'text-white' : ''}>ZONAS DE ENTREGA</a>
+                                            <a >ZONAS DE ENTREGA</a>
                                         </Link>
                                     </NavLink>
                                 </NavItem>

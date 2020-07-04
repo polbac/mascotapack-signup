@@ -14,11 +14,11 @@ function BreadcrumbStep(text, stepNumber, active) {
 
 function Breadcrumb() {
     const { stepNumber } = useStepNumber()
-
+    const width = `${(100 / 5) * stepNumber}%`
     return (
-        <div className='breadcrumb'>
-            {steps.map((text, index) => BreadcrumbStep(text, index + 1, stepNumber))}
-        </div>
+        <>
+            <div className="progress rounded-0 sticky-top"><div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" className="progress-bar" style={{width}}></div></div>
+        </>
     )
 }
 

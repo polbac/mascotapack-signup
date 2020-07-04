@@ -1,7 +1,8 @@
 import {
     Row,
     Form,
-    Button
+    Button,
+    Col
   } from "reactstrap";
 
 import ActionButtons from '../action-buttons/action-buttons'
@@ -14,15 +15,19 @@ export default function Step4() {
     return (
         <Form>
             <Row>
-            <h3>Pago!</h3>
+                <Col>
+                <p class="subtitle text-secondary">PAGO</p>
+                    <h2>Ya casi estamos!</h2>
+                    </Col>                    
             </Row>
             
-            <div className="text-center box-step box-step-2">
-            
-            <p>Te redireccionaremos a <b>MercadoPago</b><br/>para que puedas realizar el pago de tu pack</p>
-            <Button color="primary" type="button" >
-                Continuar
-            </Button>
+            <div className="box-step box-payment-step no-border box-step-2">
+                <div className="text-block">
+                    <p>Te redireccionaremos a <b>MercadoPago</b> para que puedas realizar el pago de tu pack y luego volveras al sitio</p>
+                    <Button color="primary" type="button" >
+                        Ir a Mercado Pago
+                    </Button>
+                </div>
 
             </div>
 

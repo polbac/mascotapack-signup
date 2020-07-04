@@ -10,18 +10,24 @@ function PetInput({ uuid }) {
     return (
         <div className='box-step'>
             
-            <div class='text-center'>  
+            <Row className='text-block'> 
                 
-                <div onClick={e => savePets(pet.setType(PetType.DOG))} className={`pet-selector ${pet.getType() === PetType.DOG ? 'active' : 'semi-transparent'}`}>
-                    <img className='pet-icon' src="icon-dog.svg" alt=""/><br/>perro
-                </div>
-                <div onClick={e => savePets(pet.setType(PetType.CAT))} className={`pet-selector ${pet.getType() === PetType.CAT ? 'active' : 'semi-transparent'}`}>
-                    <img className='pet-icon' src="icon-cat.svg" alt=""/><br/>gato
-                </div>
-            </div>
+                <Col>
+                <label className="h5">¿Qué tipo de mascota es?</label>
+                <br/>
+                <Button color="primary" outline={pet.getType() !== PetType.DOG} type="button" size="sm" onClick={() => savePets(pet.setType(PetType.DOG))}>
+                        Ladra
+                </Button>
 
-            <FormGroup className={`form-control-alternative ${pet.getErrors().name ? 'has-danger' : ''}`} >
-                <Row>
+                <Button color="primary" outline={pet.getType() !== PetType.CAT} type="button" size="sm" onClick={() => savePets(pet.setType(PetType.CAT))}>
+                        Maulla
+                </Button>
+                </Col>
+            </Row>
+
+            <Row className='text-block'>
+                <Col>
+                    <label className="h5">¿Cómo se llama?</label>
                     <Input
                         error
                         id="name"
@@ -31,14 +37,14 @@ function PetInput({ uuid }) {
                         defaultValue={pet.getName()}
                         onChange={e => savePets(pet.setName(e.currentTarget.value))}
                     />
-                </Row>
-            </FormGroup>
+                </Col>
+            </Row>
 
 
-            {pet.getType() === PetType.DOG && (<Row>
+            {pet.getType() === PetType.DOG && (<Row className='text-block'>
                 <Col>
-                    <label>¿Qué tamaño tiene?</label>
-
+                    <label className="h5">¿Qué tamaño tiene?</label>
+                    <br/>
                     <Button color="primary" outline={!pet.isSize(PetSize.BIG)} type="button" size="sm" onClick={() => savePets(pet.setSize(PetSize.BIG))}>
                         Grande
                     </Button>
@@ -58,10 +64,10 @@ function PetInput({ uuid }) {
                 </Col>
             </Row>)}
 
-            <Row>
+            <Row className='text-block'>
                 <Col>
-                    <label>¿Qué edad tiene?</label>
-
+                    <label className="h5">¿Qué edad tiene?</label>
+                    <br/>
                     <Button color="primary" outline={!pet.isAge(PetAge.PUPPY)} type="button" size="sm" onClick={() => savePets(pet.setAge(PetAge.PUPPY))}>
                         Cachorro
                     </Button>
@@ -78,10 +84,10 @@ function PetInput({ uuid }) {
                 </Col>
             </Row>
 
-            <Row>
+            <Row className='text-block'>
                 <Col>
-                    <label>¿Tiene problemas de obesidad?</label>
-
+                    <label className="h5">¿Tiene problemas de obesidad?</label>
+                    <br/>
                     <Button color="primary" outline={!pet.hasHealthProblem(HealthProblems.OBESITY)} type="button" size="sm" onClick={() => savePets(pet.addHelathProblem(HealthProblems.OBESITY))}>
                         Si
                     </Button>
@@ -93,10 +99,10 @@ function PetInput({ uuid }) {
                 </Col>
             </Row>
 
-            <Row>
+            <Row className='text-block'>
                 <Col>
-                    <label>¿Tiene problemas de alergía?</label>
-
+                    <label className="h5">¿Tiene problemas de alergía?</label>
+                    <br/>
                     <Button color="primary" outline={!pet.hasHealthProblem(HealthProblems.ALLERGY)} type="button" size="sm" onClick={() => savePets(pet.addHelathProblem(HealthProblems.ALLERGY))}>
                         Si
                     </Button>
@@ -108,10 +114,10 @@ function PetInput({ uuid }) {
                 </Col>
             </Row>
 
-            <Row>
+            <Row className='text-block'>
                 <Col>
-                    <label>¿Tiene problemas urinarios?</label>
-
+                    <label className="h5">¿Tiene problemas urinarios?</label>
+                    <br/>
                     <Button color="primary" outline={!pet.hasHealthProblem(HealthProblems.URINARY)} type="button" size="sm" onClick={() => savePets(pet.addHelathProblem(HealthProblems.URINARY))}>
                         Si
                     </Button>
@@ -126,8 +132,9 @@ function PetInput({ uuid }) {
 
             
 
-            <div className="text-right">
-                <Button onClick={() => removePet(uuid)} className="btn-icon btn-3 " size="sm" outline color="secondary" type="button">
+            <div className="text-left">
+                <br/>
+                <Button onClick={() => removePet(uuid)} className="btn-icon btn-3 delete" size="sm" outline color="secondary" type="button">
                     <span className="btn-inner--icon">
                         <i className="ni ni-fat-add" />
                     </span>

@@ -1,5 +1,6 @@
 import SignupState from '../context/SignupState'
-import { useContext, useCallback } from 'react'
+import { useScroll } from '../hooks/useScroll'
+import { useContext } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import Pet from '../schema/Pet'
 import { produce } from 'immer'
@@ -91,17 +92,25 @@ export function useDeliveryInformation() {
     return { delivery, setDelivery, validate }
 }
 
-
 export function useStepNumber() {
     const { stepNumber, setStepNumber } = useContext(SignupState)
+    const { setScroll } = useScroll()
 
     const next = () => {
+        setScroll(0)
         setStepNumber(stepNumber + 1)
     }
 
     const prev = () => {
+        setScroll(0)
         setStepNumber(stepNumber - 1)
     }
 
     return { stepNumber, next, prev }
+}
+
+export function useSumary() {
+    const { summary, setSummary } = useContext(SignupState)
+
+    return { summary, setSummary }
 }

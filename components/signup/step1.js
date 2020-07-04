@@ -1,7 +1,8 @@
 import {
     Button,
     Form,
-    Row
+    Row,
+    Col
   } from "reactstrap";
 import ActionButtons from '../action-buttons/action-buttons'
 import PetInput from '../pet-input/pet-input'
@@ -27,7 +28,7 @@ export default function Step1() {
         )
     } else {
         content = (
-            <div class='start-now'>
+            <div class='start-now' style={{ backgroundImage: ` url(/start_${Math.ceil(Math.random() * 2)}.jpg)`}}>
                 <Button onClick={addPet} className="btn-icon btn-3 " size="md" color="primary" type="button">
                     <span className="btn-inner--icon">
                         <i className="ni ni-fat-add" />
@@ -41,7 +42,10 @@ export default function Step1() {
     return (
         <Form>
             <Row>
-            <h3>Agregá tus mascotas</h3>
+                <Col>
+                <p className="subtitle text-secondary">Comencemos por lo más importante</p>
+                <h2>Agregá tus mascotas</h2>
+                </Col>
             </Row>
             
             <div className="text-center">
@@ -49,7 +53,7 @@ export default function Step1() {
             </div>
 
           
-            <ActionButtons showPrev={false} nextActive={arAllFullfilled()} nextAction={validate} />
+            {petUUIDs.length > 0 && <ActionButtons showPrev={false} nextActive={arAllFullfilled()} nextAction={validate} />}
 
           
         </Form>

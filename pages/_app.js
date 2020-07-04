@@ -18,9 +18,12 @@ import "../assets/css/main.css";
 import Header from "../components/header/header"
 import Whatsapp from "../components/whatsapp/whatsapp"
 import Footer from "../components/footer/footer"
+import { useRouter } from 'next/router'
 
 
 export default function MyApp({ Component, pageProps }) {
+  const router = useRouter()
+  const isCommingSoon = router.route === '/'
     return (
       <SignupStateContextProvider>
         <Head>
@@ -30,6 +33,10 @@ export default function MyApp({ Component, pageProps }) {
             async
             src="https://www.googletagmanager.com/gtag/js?id=UA-171124637-1"
           />
+
+<link rel="icon" 
+      type="image/png" 
+      href="logo_black.png" />
 
           <script
             dangerouslySetInnerHTML={{
@@ -42,10 +49,10 @@ export default function MyApp({ Component, pageProps }) {
             }}
           />
         </Head>
-        <Header />
+        {!isCommingSoon && <Header />}
         <Component {...pageProps} />
         <Whatsapp />
-        <Footer />
+        {!isCommingSoon && <Footer />}
       </SignupStateContextProvider>
     )
   }

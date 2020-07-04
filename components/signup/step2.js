@@ -14,7 +14,7 @@ export default function Step2() {
     return (
         <>
             <Row>
-            <h3>¡Tu pack!</h3>
+            <h2>¡Tu pack!</h2>
             </Row>
 
             

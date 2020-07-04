@@ -23,36 +23,40 @@ export default function Step4() {
     return (
         <Form>
             <Row>
-            <h3>Envío!</h3>
+                <Col>
+                <p class="subtitle text-secondary">DIRECCIÓN DE ENVÍO</p>
+                    <h2>¿Dónde querés que lo enviemos?</h2>
+                    </Col>                    
             </Row>
             
-            <div className="text-center box-step box-step-2">
+            <div className="box-step no-border box-step-2">
             {delivery.hasErrors() && !delivery.isValid() && (
                 <Alert>Ups! Parece que hay errores</Alert>
             )}
-            <p>Ingresá dónde querés que lo enviemos:</p>
 
-            <p className='delivery-only'>ATENCIÓN! POR EL MOMENTO SÓLO ENVÍO EN CAPITAL FEDERAL</p>
-                <FormGroup className={`form-control-alternative ${delivery.getErrors().street ? 'has-danger' : ''}`} >
-                    <Row>
-                        <Col>
-                            <Input
-                                id="street"
-                                key="street"
-                                placeholder="Calle"
-                                type="text"
-                                defaultValue={delivery.getValue('street')}
-                                onChange={e => changeDelivery(delivery.setValue('street', e.currentTarget.value))}
-                            />
-                        </Col>
-                    </Row>
-                    
-                    
-                </FormGroup>
+                <p className='delivery-only'>ATENCIÓN! POR EL MOMENTO SÓLO ENVÍO EN CAPITAL FEDERAL</p>
+                <Row className='text-block'>
+                    <Col>
+                        <FormGroup className={`form-control-alternative ${delivery.getErrors().street ? 'has-danger' : ''}`} >
+                        
+                            <label class="h5">Calle:</label>
+                                <Input
+                                    id="street"
+                                    key="street"
+                                    placeholder="Calle"
+                                    type="text"
+                                    defaultValue={delivery.getValue('street')}
+                                    onChange={e => changeDelivery(delivery.setValue('street', e.currentTarget.value))}
+                                />
+                            
+                    </FormGroup>
+                    </Col>
+                </Row>
 
-                    <Row>
+                <Row className='text-block'>
                         <Col>
                             <FormGroup className={`form-control-alternative ${delivery.getErrors().floor ? 'has-danger' : ''}`} >
+                            <label class="h5">Piso:</label>
                                 <Input
                                     id="floor"
                                     key="floor"
@@ -65,6 +69,7 @@ export default function Step4() {
                         </Col>
                         <Col>
                             <FormGroup className={`form-control-alternative ${delivery.getErrors().number ? 'has-danger' : ''}`} >
+                            <label class="h5">Número:</label>
                                 <Input
                                     id="number"
                                     key="number"
@@ -76,6 +81,7 @@ export default function Step4() {
                             </FormGroup>
                         </Col>
                         <Col>
+                        <label class="h5">Barrio:</label>
                                 <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                                     <DropdownToggle caret>
                                         {delivery.getValue('neighbourhood') || 'Barrio'}
@@ -107,10 +113,11 @@ export default function Step4() {
                         </Col>
                     </Row>
 
-
+                    <Row className='text-block'>
                     <FormGroup className={`form-control-alternative`} >
                         <Row>
                             <Col>
+                            <label class="h5">Algo que quieras que tomemos en cuenta</label>
                                 <Input
                                     id="street"
                                     key="street"
@@ -124,6 +131,7 @@ export default function Step4() {
                         
                         
                     </FormGroup>
+                    </Row>
                     
                     
                 

@@ -9,6 +9,7 @@ export function SignupStateContextProvider({children}) {
     const [pets, setPets] = useState({})
     const [person, setPerson] = useState(new Person())
     const [delivery, setDelivery] = useState(new Delivery())
+    const [summary, setSummary] = useState([])
     
     return <SignupStateContext.Provider value={{
         stepNumber,
@@ -20,7 +21,9 @@ export function SignupStateContextProvider({children}) {
         person,
         setPerson,
         delivery,
-        setDelivery
+        setDelivery,
+        summary,
+        setSummary
     }}>
         {children}
     </SignupStateContext.Provider>
