@@ -4,12 +4,41 @@ const HowPage = () => (
   <main>
     <section className="py-7 how-work">
       <div className="container">
-      <h2 className="mb-5 text-center">Cómo funciona</h2>
+      <h2 className="mb-5 text-center">¿Cómo funciona?</h2>
         <div className="py-4">
-          <h2 className="mb-5 text-primary">
-            <Svg icon="open-box-1" size={30} />&nbsp;
-            Acerca
-          </h2>
+
+          <div className="como-funciona">
+            <div className="row como-funciona-step">
+                <div className="col-md-4 como-funciona-fondo" style={{backgroundImage: 'url(/como_funcipna_0.png)'}}>
+                </div>
+                <div className="col-md-8">
+                  <p className='title'>1 / Presentas a tus mascotas</p>
+                  <p>Nos contas sus datos y características</p>
+                </div>
+            </div>
+            <div className="row como-funciona-step">
+                <div className="col-md-4 como-funciona-fondo" style={{backgroundImage: 'url(/como_funcipna_0.png)'}}>
+                </div>
+                <div className="col-md-8">
+                  <p className='title'>2 / Te ofrecemos tu pack</p>
+                </div>
+            </div>
+            <div className="row como-funciona-step">
+                <div className="col-md-4 como-funciona-fondo" style={{backgroundSize: '90% auto', backgroundImage: 'url(/como_funcipna_2.png)'}}>
+                </div>
+                <div className="col-md-8">
+                  <p className='title'>3 / Llega a domicilio</p>
+                </div>
+            </div>
+            <div className="row como-funciona-step">
+                <div className="col-md-4 como-funciona-fondo" style={{backgroundSize: '90% auto', backgroundImage: 'url(/como_funcipna_1.png)'}}>
+                </div>
+                <div className="col-md-8">
+                  <p className='title'>4 / Al mes volves a confirmar tu pack</p>
+                  <p>Según nuestros cálculos cuando te estes quedando sin comida</p>
+                </div>
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-6">
               <h5>Qué es</h5>

@@ -1,3 +1,5 @@
+import { useQuery, gql } from '@apollo/client';
+
 import SignupState from '../context/SignupState'
 import { useScroll } from '../hooks/useScroll'
 import { useContext } from 'react'
@@ -111,6 +113,14 @@ export function useStepNumber() {
 
 export function useSumary() {
     const { summary, setSummary } = useContext(SignupState)
+    const { loading, error, data } = useQuery(gql`
+        query{
+            products{
+            Nombre
+            }
+        }
+    `);
+    console.log(loading, error, data)
 
-    return { summary, setSummary }
+    return { summary, setSummary, loading, error, data }
 }

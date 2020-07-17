@@ -14,6 +14,8 @@ import "../assets/directory/css/style.default.min.css"
 import "../assets/directory/icons/styles.css"
 import "../assets/css/main.css";
 
+import { ApolloProvider } from '@apollo/client';
+import { client } from '../apollo'
 
 import Header from "../components/header/header"
 import Whatsapp from "../components/whatsapp/whatsapp"
@@ -25,6 +27,7 @@ export default function MyApp({ Component, pageProps }) {
   const router = useRouter()
   const isCommingSoon = router.route === '/'
     return (
+      <ApolloProvider client={client}>
       <SignupStateContextProvider>
         <Head>
           <title>mascotapack</title>
@@ -54,5 +57,6 @@ export default function MyApp({ Component, pageProps }) {
         <Whatsapp />
         {!isCommingSoon && <Footer />}
       </SignupStateContextProvider>
+      </ApolloProvider>
     )
   }

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useScrollYPosition } from 'react-use-scroll-position';
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState, useCallback } from 'react';
 
 function getScrollPosition() {
     if (!process.browser) return { x: 0, y: 0 }
@@ -39,8 +39,45 @@ export default function Header() {
             }, [])
     }
 
+    const toggleMenu = () => {
+        setNavOpen(!navOpen)
+    }
+
     return (
         <header>
+            {navOpen && (
+                <div className="nav-mobile">
+                    <Link href="/home"><span className="mobile-logo"><b>MASCOTAPACK</b>  <img width="30" src="/logo.png"/></span></Link>
+                <NavItem>
+                <NavLink>
+                    <Link href="/home">
+                        <a onClick={toggleMenu}>HOME</a>
+                    </Link>
+                </NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink>
+                        <Link href="/como-funciona">
+                            <a onClick={toggleMenu}>CÓMO FUNCIONA</a>
+                        </Link>
+                    </NavLink>
+                </NavItem>
+                <NavItem>
+                <NavLink>
+                        <Link href="/zonas-de-entrega">
+                            <a onClick={toggleMenu}>ZONAS DE ENTREGA</a>
+                        </Link>
+                    </NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink>
+                        <Link href="/comenzar">
+                            <a onClick={toggleMenu} className="btn btn-primary rounded-xl">COMENZAR</a>
+                        </Link>
+                    </NavLink>
+                </NavItem>
+                </div>
+            )}
             <Navbar expand="lg" className={classnames({
                 'fixed-top': true,
                 'white': isWhite
@@ -51,12 +88,15 @@ export default function Header() {
                         <NavbarBrand href="/"><span>mascotapack  <img src={isWhite ? "/logo.png" : "/logo_black.png"} /></span></NavbarBrand>
                     </Col>
                     <Col xs="10">
-                        <NavbarToggler aria-label="Toggle navigation" onClick={() => setNavOpen(!navOpen)} >
-                            <img src="/menu.svg" width="20" />
-                        </NavbarToggler>
+                        
+                        <div className="menu-mobile" onClick={toggleMenu}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                 
                     
-                        <Collapse navbar isOpen={navOpen}>
+                        <Collapse navbar >
                             <Nav navbar className={`mr-auto`}>
                                 <NavItem>
                                     <NavLink>

@@ -4,8 +4,35 @@ html,body{
     background-size: 100%;
     background-position: top center;
     background-repeat: no-repeat;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
+.como-funciona-step{
+    max-width: 600px;
+    margin: auto;
+    border: 4px solid #32325d;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0;
+    
+}
+
+.como-funciona{
+    margin-bottom: 100px;
+}
+
+.como-funciona-step .title{
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.como-funciona-fondo{
+    background-size: auto 80%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 200px;
+}
 
 h1 {
     font-weight: 400;
@@ -315,8 +342,81 @@ h3 {
     height: 20px;
 }
 
+.mobile-logo{
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.nav-mobile{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    z-index: 9999;
+    text-align: center;
+    font-weight: 700;
+    font-family: Poppins,sans-serif;
+    color: #32325d;
+}
+
+.nav-mobile .nav-item{
+    list-style: none;
+    margin-top: 15px;
+}
+
+.nav-mobile .nav-item a{
+    color: #32325d;
+    
+}
+
+
+
+.menu-mobile{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e2e2e2;
+    right: 10px;
+    top: -19px;
+    border-radius: 5px;
+    padding-top: 4px;
+    display: none;
+    font-family: Poppins,sans-serif;
+}
+
+section{
+    overflow-x: hidden;
+}
+
+.menu-mobile span{
+    width: 23px;
+    height: 2px;
+    border-radius: 2px;
+    background: #32325d;
+    display: block;
+    margin-left: 8px;
+    margin-top: 6px;;
+}
+
 
 @media (max-width: 640px){
+    .pack-description{
+        overflow: hidden;
+    }
+
+    .pack-description .box{
+        width: 290px;
+        padding: 20px;
+    }
+    
+    .menu-mobile{
+        display: block;
+    }
+
     .navbar{
         background: white;
         height: 80px;
