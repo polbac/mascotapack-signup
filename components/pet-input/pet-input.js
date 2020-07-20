@@ -1,6 +1,6 @@
 import { Col, Input, FormGroup, Row, Button, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap"
 import { usePets } from '../../hooks/signupStateForm'
-import { PetType, PetSize, PetAge, HealthProblems } from "../../schema/Pet"
+import { PetType, PetSize, PetAge, HealthProblems, Sex, Bit } from "../../schema/Pet"
 
 
 function PetInput({ uuid }) {
@@ -21,6 +21,21 @@ function PetInput({ uuid }) {
 
                 <Button color="primary" outline={pet.getType() !== PetType.CAT} type="button" size="sm" onClick={() => savePets(pet.setType(PetType.CAT))}>
                         Maulla
+                </Button>
+                </Col>
+            </Row>
+
+            <Row className='text-block'> 
+                
+                <Col>
+                <label className="h5">¿Es macho o hembra?</label>
+                <br/>
+                <Button color="primary" outline={pet.getSex() !== Sex.MALE} type="button" size="sm" onClick={() => savePets(pet.setSex(PetType.MALE))}>
+                        Macho
+                </Button>
+
+                <Button color="primary" outline={pet.getSex() !== Sex.FEMALE} type="button" size="sm" onClick={() => savePets(pet.setSex(PetType.FEMALE))}>
+                        Hembra
                 </Button>
                 </Col>
             </Row>
@@ -60,6 +75,24 @@ function PetInput({ uuid }) {
                     <Button color="primary" outline={!pet.isSize(PetSize.TOY)} type="button" size="sm" onClick={() => savePets(pet.setSize(PetSize.TOY))}>
                         Toy
                     </Button>
+                    
+                </Col>
+            </Row>)}
+
+            {pet.getType() === PetType.DOG && (<Row className='text-block'>
+                <Col>
+                    <label className="h5">¿Qué mordida tiene?</label>
+                    <br/>
+                    <Button color="primary" outline={!(pet.getBit() === Bit.BIG)} type="button" size="sm" onClick={() => savePets(pet.setBit(Bit.BIG))}>
+                        Grande
+                    </Button>
+
+                    <Button color="primary" outline={!(pet.getBit() === Bit.SMALL)} type="button" size="sm" onClick={() => savePets(pet.setBit(Bit.SMALL))}>
+                        Chica
+                    </Button>
+
+                    
+
                     
                 </Col>
             </Row>)}
@@ -129,8 +162,51 @@ function PetInput({ uuid }) {
                 </Col>
             </Row>
 
+            <Row className='text-block'>
+                <Col>
+                    <label className="h5">¿Tiene problemas gastrointestinales?</label>
+                    <br/>
+                    <Button color="primary" outline={!pet.hasHealthProblem(HealthProblems.GASTRO)} type="button" size="sm" onClick={() => savePets(pet.addHelathProblem(HealthProblems.GASTRO))}>
+                        Si
+                    </Button>
 
-            
+                    <Button color="primary" outline={pet.hasHealthProblem(HealthProblems.GASTRO)} type="button" size="sm" onClick={() => savePets(pet.removeHealthProblem(HealthProblems.GASTRO))}>
+                        No
+                    </Button>
+                    
+                </Col>
+            </Row>
+
+            <Row className='text-block'>
+                <Col>
+                    <label className="h5">¿Tiene problemas renales?</label>
+                    <br/>
+                    <Button color="primary" outline={!pet.hasHealthProblem(HealthProblems.RENAL)} type="button" size="sm" onClick={() => savePets(pet.addHelathProblem(HealthProblems.RENAL))}>
+                        Si
+                    </Button>
+
+                    <Button color="primary" outline={pet.hasHealthProblem(HealthProblems.RENAL)} type="button" size="sm" onClick={() => savePets(pet.removeHealthProblem(HealthProblems.RENAL))}>
+                        No
+                    </Button>
+                    
+                </Col>
+            </Row>
+
+            <Row className='text-block'>
+                <Col>
+                    <label className="h5">¿Está esterelizado?</label>
+                    <br/>
+                    <Button color="primary" outline={!pet.hasHealthProblem(HealthProblems.STERIL)} type="button" size="sm" onClick={() => savePets(pet.addHelathProblem(HealthProblems.STERIL))}>
+                        Si
+                    </Button>
+
+                    <Button color="primary" outline={pet.hasHealthProblem(HealthProblems.STERIL)} type="button" size="sm" onClick={() => savePets(pet.removeHealthProblem(HealthProblems.STERIL))}>
+                        No
+                    </Button>
+                    
+                </Col>
+            </Row>
+
 
             <div className="text-left">
                 <br/>

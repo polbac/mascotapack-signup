@@ -1,72 +1,58 @@
-import emailValidator from 'email-validator'
+import SchemaBase from './SchemaBase';
 
-import SchemaBase from './SchemaBase'
+export default class Delivery extends SchemaBase {
+  constructor(street = '', floor = '', number = '', neighbourhood = '', extra = '') {
+    super();
+    this.street = street;
+    this.floor = floor;
+    this.number = number;
+    this.neighbourhood = neighbourhood;
+    this.extra = extra;
+    this.errors = {};
+  }
 
-export default class Delivery extends SchemaBase{
-    street = ''
-    floor = ''
-    number = ''
-    neighbourhood = ''
-    extra = ''
+  isStreetValid() {
+    return this.getValue('street').length >= 2;
+  }
 
-    errors = {}
+  isFloorValid() {
+    return this.getValue('floor').length >= 1;
+  }
 
-    constructor(street = '', floor = '', number = '', neighbourhood = '', extra = '') {
-        super()
-        this.street = street
-        this.floor = floor
-        this.number = number
-        this.neighbourhood = neighbourhood
-        this.extra = extra
-    }
+  isNeighbourhoodValid() {
+    return this.getValue('neighbourhood') !== '';
+  }
 
+  isNumberValid() {
+    return this.getValue('number') !== '';
+  }
 
-    isStreetValid() {
-        return this.getValue('street').length >= 2
-    }
+  isValid() {
+    return this.isStreetValid()
+            && this.isFloorValid()
+            && this.isNeighbourhoodValid()
+            && this.isNumberValid();
+  }
 
-    isFloorValid() {
-        return this.getValue('floor').length >= 1
-    }
+  validate() {
+    this.errors = {
+      street: !this.isStreetValid(),
+      floor: !this.isFloorValid(),
+      street: !this.isStreetValid(),
+      neighbourhood: !this.isNeighbourhoodValid(),
+    };
 
-    isNeighbourhoodValid() {
-        return this.getValue('neighbourhood') !== ''
-    }
+    return this.returnNew(this);
+  }
 
-    isNumberValid() {
-        return this.getValue('number') !== ''
-    }
+  getErrors() {
+    return this.errors;
+  }
 
-
-    isValid() {
-        return this.isStreetValid() &&
-            this.isFloorValid() &&
-            this.isNeighbourhoodValid() &&
-            this.isNumberValid()
-    }
-
-  
-    validate() {
-        this.errors = {
-            street: !this.isStreetValid(),
-            floor: !this.isFloorValid(),
-            street: !this.isStreetValid(),
-            neighbourhood: !this.isNeighbourhoodValid(),
-        }
-
-        return this.returnNew(this)
-    }
-
-    getErrors() {
-        return this.errors
-    }
-
-    isFullfilled() {
-        return this.street !== '' &&
-            this.floor  !== '' &&
-            this.number  !== '' &&
-            this.neighbourhood  !== ''
-    }
-
-
+  isFullfilled() {
+    return this.street !== ''
+            && this.floor !== ''
+            && this.number !== ''
+            && this.neighbourhood !== '';
+  }
 }

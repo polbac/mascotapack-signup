@@ -1,139 +1,154 @@
 export const PetType = {
-    DOG: 'dog',
-    CAT: 'cat',
-}
+  DOG: 'Perro',
+  CAT: 'Gato',
+};
 
 export const PetSize = {
-    BIG: 'big',
-    MEDIUM: 'medium',
-    SMALL: 'small',
-    TOY: 'toy',
-}
+  BIG: 'Large',
+  MEDIUM: 'Medium',
+  SMALL: 'Small',
+  TOY: 'Toy',
+};
 
 export const PetAge = {
-    PUPPY: 'puppy',
-    ADULT: 'adult',
-    SENIOR: 'senior',
-}
+  PUPPY: 'Cachorro',
+  ADULT: 'Adulto',
+  SENIOR: 'Sennior',
+};
 
 export const HealthProblems = {
-    ALLERGY: 'allergy',
-    OBESITY: 'obesity',
-    URINARY: 'urinary'
-}
+  ALLERGY: 'Hipoalergenico',
+  OBESITY: 'SobrePeso',
+  URINARY: 'Urinario',
+  RENAL: 'Renal',
+  STERIL: 'Esterelizado',
+  GASTRO: 'Gastrointestinal',
+};
+
+export const Sex = {
+  FEMALE: 'Hembra',
+  MALE: 'Macho',
+};
+
+export const Bit = {
+  SMALL: 'Pequena',
+  BIG: 'Grande',
+};
 
 export default class Pet {
-    uuid = null
-    name = null
-    type = null
-    size = null
-    age = null
-    health = []
-    errors = {
-        name: false,
-    }
+  constructor(uuid, name = null, type = PetType.DOG, size = PetSize.BIG, age = PetAge.PUPPY, health = [], sex = Sex.MALE, bit = Bit.BIG) {
+    this.uuid = uuid;
+    this.name = name;
+    this.type = type;
+    this.size = size;
+    this.age = age;
+    this.health = health;
+    this.sex = sex;
+    this.bit = bit;
+    this.errors = {};
+  }
 
-    constructor(uuid, name = null, type = PetType.DOG, size = PetSize.BIG, age = PetAge.PUPPY, health = []) {
-        this.uuid = uuid
-        this.name = name
-        this.type = type
-        this.size = size
-        this.age = age
-        this.health = health
-    }
+  getUUID() {
+    return this.uuid;
+  }
 
-    getUUID() {
-        return this.uuid
-    }
+  getName() {
+    return this.getAsString(this.name);
+  }
 
-    getName() {
-        return this.getAsString(this.name)
-    }
+  setName(name) {
+    this.name = name;
+    return this;
+  }
 
-    setName(name) {
-        this.name = name
-        return this
-    }
+  getAge() {
+    return this.getAsString(this.age);
+  }
 
-    getAge() {
-        return this.getAsString(this.age)
-    }
+  setAge(age) {
+    this.age = age;
+    return this;
+  }
 
-    setAge(age) {
-        this.age = age
-        return this
-    }
+  getSize() {
+    return this.getAsString(this.size);
+  }
 
-    getSize() {
-        return this.getAsString(this.size)
-    }
+  setSize(size) {
+    this.size = size;
+    return this;
+  }
 
-    setSize(size) {
-        this.size = size
-        return this
-    }
+  getSex() {
+    return this.getAsString(this.sex);
+  }
 
-    isSize(size) {
-        return size === this.size
-    }
+  setSex(sex) {
+    this.sex = sex;
+    return this;
+  }
 
-    getAge() {
-        return this.getAsString(this.age)
-    }
+  getBit() {
+    return this.getAsString(this.bit);
+  }
 
-    setAge(age) {
-        this.age = age
-        return this
-    }
+  setBit(bit) {
+    this.bit = bit;
+    return this;
+  }
 
-    isAge(age) {
-        return age === this.age
-    }
+  isSize(size) {
+    return size === this.size;
+  }
 
-    getAsString(value) {
-        return value === null ? '' : value
-    }
+  isAge(age) {
+    return age === this.age;
+  }
 
-    getType() {
-        return this.type
-    }
+  getAsString(value) {
+    return value === null ? '' : value;
+  }
 
-    setType(type) {
-        this.type = type
-        return this
-    }
+  getType() {
+    return this.type;
+  }
 
-    addHelathProblem(healthProblem) {
-        if (!this.hasHealthProblem(healthProblem)) {
-            this.health.push(healthProblem)
-        }
-        return this
-    }
+  setType(type) {
+    this.type = type;
+    return this;
+  }
 
-    removeHealthProblem(healthProblem) {
-        this.health = this.health.filter(h => h !== healthProblem)
-        return this
+  addHelathProblem(healthProblem) {
+    if (!this.hasHealthProblem(healthProblem)) {
+      this.health.push(healthProblem);
     }
+    return this;
+  }
 
-    hasHealthProblem(healthProblem) {
-        return this.health.includes(healthProblem)
-    }
+  removeHealthProblem(healthProblem) {
+    this.health = this.health.filter((h) => h !== healthProblem);
+    return this;
+  }
 
-    isFullfilled() {
-        return this.isNameValid()
-    }
+  hasHealthProblem(healthProblem) {
+    return this.health.includes(healthProblem);
+  }
 
-    isNameValid() {
-        return this.getName().length >= 2
-    }
+  isFullfilled() {
+    return this.isNameValid();
+  }
 
-    validate() {
-        this.errors = {
-            name: !this.isNameValid()
-        }
-    }
+  isNameValid() {
+    return this.getName().length >= 2;
+  }
 
-    getErrors() {
-        return this.errors
-    }
+  validate() {
+    this.errors = {
+      name: !this.isNameValid(),
+    };
+  }
+
+  getErrors() {
+    return this.errors;
+  }
 }

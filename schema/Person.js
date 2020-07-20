@@ -1,87 +1,79 @@
-import emailValidator from 'email-validator'
+import emailValidator from 'email-validator';
 
-import SchemaBase from './SchemaBase'
+import SchemaBase from './SchemaBase';
 
-export default class Person extends SchemaBase{
-    name = ''
-    email = ''
-    phone = ''
+export default class Person extends SchemaBase {
+  constructor(name = '', email = '', phone = '') {
+    super();
+    this.name = name;
+    this.email = email;
+    this.phone = phone;
+    this.errors = {};
+  }
 
-    errors = {}
+  getName() {
+    return this.getAsString(this.name);
+  }
 
-    constructor(name = '', email = '', phone = '') {
-        super()
-        this.name = name
-        this.email = email
-        this.phone = phone
-    }
+  setName(name) {
+    this.name = name;
+    return this.returnNew(this);
+  }
 
-    getName() {
-        return this.getAsString(this.name)
-    }
+  getEmail() {
+    return this.getAsString(this.email);
+  }
 
-    setName(name) {
-        this.name = name
-        return this.returnNew(this)
-    }
+  setEmail(email) {
+    this.email = email;
+    return this.returnNew(this);
+  }
 
-    getEmail() {
-        return this.getAsString(this.email)
-    }
+  getPhone() {
+    return this.getAsString(this.phone);
+  }
 
-    setEmail(email) {
-        this.email = email
-        return this.returnNew(this)
-    }
+  setPhone(phone) {
+    this.phone = phone;
+    return this.returnNew(this);
+  }
 
-    getPhone() {
-        return this.getAsString(this.phone)
-    }
+  isNameValid() {
+    return this.getName().length >= 2;
+  }
 
-    setPhone(phone) {
-        this.phone = phone
-        return this.returnNew(this)
-    }
+  isEmailValid() {
+    return emailValidator.validate(this.email);
+  }
 
-    isNameValid() {
-        return this.getName().length >= 2
-    }
+  isValid() {
+    return this.isNameValid()
+            && this.isEmailValid()
+            && this.isPhoneValid();
+  }
 
-    isEmailValid() {
-        return emailValidator.validate(this.email)
-    }
+  isPhoneValid() {
+    console.log(this.getPhone().match(/\d/g));
+    if (this.getPhone().match(/\d/g) === null) return false;
+    return this.getPhone().match(/\d/g).length === 10;
+  }
 
-    isValid() {
-        return this.isNameValid() &&
-            this.isEmailValid() &&
-            this.isPhoneValid()
-    }
+  validate() {
+    this.errors = {
+      name: !this.isNameValid(),
+      email: !this.isEmailValid(),
+      phone: !this.isPhoneValid(),
+    };
+    return this.returnNew(this);
+  }
 
-    isPhoneValid() {
-        console.log(this.getPhone().match(/\d/g))
-        if (this.getPhone().match(/\d/g) === null) return false
-        return this.getPhone().match(/\d/g).length===10;
+  getErrors() {
+    return this.errors;
+  }
 
-    }
-
-    validate() {
-        this.errors = {
-            name: !this.isNameValid(),
-            email: !this.isEmailValid(),
-            phone: !this.isPhoneValid(),
-        }
-        return this.returnNew(this)
-    }
-
-    getErrors() {
-        return this.errors
-    }
-
-    isFullfilled() {
-        return this.name !== '' &&
-            this.email  !== '' &&
-            this.phone  !== ''
-    }
-
-
+  isFullfilled() {
+    return this.name !== ''
+            && this.email !== ''
+            && this.phone !== '';
+  }
 }

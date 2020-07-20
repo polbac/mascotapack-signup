@@ -8,6 +8,19 @@ html,body{
     overflow-x: hidden;
 }
 
+.como-funciona-step:first-of-type{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+}
+
+.como-funciona-step:last-of-type{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom: 4px solid #32325d;
+
+}
+
 .como-funciona-step{
     max-width: 600px;
     margin: auto;
@@ -25,6 +38,7 @@ html,body{
 .como-funciona-step .title{
     font-weight: 700;
     font-size: 22px;
+    line-height: 22px;
 }
 
 .como-funciona-fondo{
@@ -402,8 +416,32 @@ section{
     margin-top: 6px;;
 }
 
+.item-title{
+    text-transform: capitalize;
+}
+
+.category-summary{
+    font-size: 11px;
+    color: gray;
+    text-transform: uppercase;
+}
+
+.como-funciona-step .number{
+    color: #e83e8c;
+}
+
+.como-funciona-step p{
+    line-height: 18px;
+}
+
 
 @media (max-width: 640px){
+    .como-funciona-fondo{
+        background-size: 60% auto !important;
+    }
+    .como-funciona{
+        text-align: center;
+    }
     .pack-description{
         overflow: hidden;
     }

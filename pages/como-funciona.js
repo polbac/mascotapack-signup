@@ -12,30 +12,32 @@ const HowPage = () => (
                 <div className="col-md-4 como-funciona-fondo" style={{backgroundImage: 'url(/como_funcipna_0.png)'}}>
                 </div>
                 <div className="col-md-8">
-                  <p className='title'>1 / Presentas a tus mascotas</p>
+                  <p className='title'><span className="number">1</span> Presentas a tus mascotas</p>
                   <p>Nos contas sus datos y características</p>
                 </div>
             </div>
             <div className="row como-funciona-step">
-                <div className="col-md-4 como-funciona-fondo" style={{backgroundImage: 'url(/como_funcipna_0.png)'}}>
+                <div className="col-md-4 como-funciona-fondo" style={{backgroundImage: 'url(/como_funcipna_3.jpg)'}}>
                 </div>
                 <div className="col-md-8">
-                  <p className='title'>2 / Te ofrecemos tu pack</p>
+                  <p className='title'><span className="number">2</span> Te ofrecemos tu pack</p>
+                  <p>Que tendrá todo lo necesario para que tus mascotas disfruten por un mes.</p>
                 </div>
             </div>
             <div className="row como-funciona-step">
                 <div className="col-md-4 como-funciona-fondo" style={{backgroundSize: '90% auto', backgroundImage: 'url(/como_funcipna_2.png)'}}>
                 </div>
                 <div className="col-md-8">
-                  <p className='title'>3 / Llega a domicilio</p>
+                  <p className='title'><span className="number">3</span> Llega a domicilio</p>
+                  <p>Sin salir de tu casa y cuidándonos entre todos.</p>
                 </div>
             </div>
             <div className="row como-funciona-step">
                 <div className="col-md-4 como-funciona-fondo" style={{backgroundSize: '90% auto', backgroundImage: 'url(/como_funcipna_1.png)'}}>
                 </div>
                 <div className="col-md-8">
-                  <p className='title'>4 / Al mes volves a confirmar tu pack</p>
-                  <p>Según nuestros cálculos cuando te estes quedando sin comida</p>
+                  <p className='title'><span className="number">4</span> Al mes volves a confirmar tu pack</p>
+                  <p>Según nuestros cálculos cuando te estes quedando sin comida te llegará un correo para volver a confirmar tu próximo envío y pagar por el mismo.</p>
                 </div>
             </div>
           </div>
