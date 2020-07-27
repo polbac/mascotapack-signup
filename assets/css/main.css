@@ -786,6 +786,17 @@ p{
     background: linear-gradient(45deg, rgba(238,173,247,1) 0%, rgba(236,104,45,1) 100%);
     border: 0;
 }
+
+.newsletter-group .alert{
+    margin-bottom: 10px;
+}
+
+.btn-newsletter{
+    height: 40px;
+    background: rgb(238,173,247);
+    background: linear-gradient(45deg, rgba(238,173,247,1) 0%, rgba(236,104,45,1) 100%);
+}
+
 .comming p{line-height: 15px;}
 .comming .brand{
     
@@ -889,3 +900,4 @@ header .navbar-brand img{position: relative; top: -3px;}
 		transform: translatey(0px);
 	}
 }
+
