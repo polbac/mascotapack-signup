@@ -901,3 +901,66 @@ header .navbar-brand img{position: relative; top: -3px;}
 	}
 }
 
+.expolorar{
+    width: 95%;
+    margin: auto;
+    justify-content: center;
+    max-width: 1200px;
+    margin-top: 150px;
+    display: flex;
+
+}
+
+.expolorar .filters{
+    width: 360px;
+}
+
+.expolorar .product-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    
+}
+.product-box{
+    box-shadow: 1px 1px 1px rgba(0,0,0,.1);
+    border: 1px solid #ececec;
+    margin: 15px;
+    width: 250px;
+}
+
+.product-box img{
+    height: 150px;
+}
+.product-box .info-container{
+    padding: 10px;
+}
+.product-box .name{
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+}
+
+.product-box .weight{
+    margin: 0;
+    padding: 0;
+}
+
+.product-box .action{
+    background: #f3f3f3;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.filters .title{
+    font-weight: 700;
+    border-bottom: 1px solid #ececec;
+}
+
+.filters .option{
+    padding: 0;
+    margin: 0;
+    color:#9c9c9c;
+    cursor: pointer;
+}

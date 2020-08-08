@@ -15,15 +15,15 @@ export default function Footer() {
         <div className="row">
           <div className="mb-6 mb-lg-0 col-lg-6">
             <h4>Medios de Pago</h4>
-            <img className="card" src="cards/1.png" />
-            <img className="card" src="cards/2.png" />
-            <img className="card" src="cards/3.png" />
-            <img className="card" src="cards/4.png" />
-            <img className="card" src="cards/5.png" />
-            <img className="card" src="cards/6.png" />
-            <img className="card" src="cards/7.png" />
-            <img className="card" src="cards/8.png" />
-            <img className="card" src="cards/9.png" />
+            <img className="card" src="/cards/1.png" />
+            <img className="card" src="/cards/2.png" />
+            <img className="card" src="/cards/3.png" />
+            <img className="card" src="/cards/4.png" />
+            <img className="card" src="/cards/5.png" />
+            <img className="card" src="/cards/6.png" />
+            <img className="card" src="/cards/7.png" />
+            <img className="card" src="/cards/8.png" />
+            <img className="card" src="/cards/9.png" />
           </div>
           <div className="mb-6 mb-lg-0 col-lg-6">
             <h4>Sigamos conectados</h4>
@@ -71,9 +71,11 @@ export default function Footer() {
               <div className="font-weight-bold text-uppercase text-dark mb-3">
                 NOVEDADES
               </div>
-              <p>Suscribite y conocé nuestras ofertas</p>
+              
 
-              <Formik
+              {data ? (<p>Gracias por subirte a esta movida :)</p>) : (<>
+                <p>Suscribite y conocé nuestras ofertas</p>
+                <Formik
                 initialValues={{ email: '' }}
                 validationSchema={Yup.object().shape({
                   email: Yup.string()
@@ -83,7 +85,7 @@ export default function Footer() {
                 onSubmit={({ email }) => {
                   createNewsletter({
                     variables: {
-                      email,
+                      email
                     }
                   })
                 }}
@@ -99,7 +101,8 @@ export default function Footer() {
                     </div>
                   </Form>
                 )}
-              </Formik>
+              </Formik></>
+              )}
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ import {
 import { useCallback } from 'react';
 import Alert from '../alert/alert';
 import ActionButtons from '../action-buttons/action-buttons';
-import { usePersonalInformation, useStepNumber } from '../../hooks/signupStateForm';
+import { usePersonalInformation, useStepNumber } from '../../hooks/signup';
 
 export default function Step3() {
   const { person, setPerson, validate } = usePersonalInformation();

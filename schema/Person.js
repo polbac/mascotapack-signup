@@ -53,7 +53,6 @@ export default class Person extends SchemaBase {
   }
 
   isPhoneValid() {
-    console.log(this.getPhone().match(/\d/g));
     if (this.getPhone().match(/\d/g) === null) return false;
     return this.getPhone().match(/\d/g).length === 10;
   }

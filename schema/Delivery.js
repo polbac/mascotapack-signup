@@ -38,7 +38,6 @@ export default class Delivery extends SchemaBase {
     this.errors = {
       street: !this.isStreetValid(),
       floor: !this.isFloorValid(),
-      street: !this.isStreetValid(),
       neighbourhood: !this.isNeighbourhoodValid(),
     };
 

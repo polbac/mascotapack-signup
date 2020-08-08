@@ -1,14 +1,17 @@
 import { gql } from '@apollo/client';
 
 export const GET_PRODUCTS = gql`
-  query {
-    products {
-        Slug
-        Nombre
-        PrecioLista
-        Categoria
-        PesoBolsa
-        Marca
+ query products($Animal: String){
+    products(where:{Animal: $Animal}){
+      Slug
+      Animal
+      Nombre
+      PrecioVenta
+      Categoria
+      PesoBolsa
+      Imagen{
+        url
+      }
     }
-}
+  }
 `;

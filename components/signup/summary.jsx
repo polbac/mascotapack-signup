@@ -1,7 +1,7 @@
 import ContentLoader from 'react-content-loader';
 import React from 'react';
 import { parsePrice } from '../../helpers/price';
-import { useSumary } from '../../hooks/useSummary';
+import { useSumary } from '../../hooks/summary';
 import SummaryCategory from './summary-category';
 
 export default function Summary() {

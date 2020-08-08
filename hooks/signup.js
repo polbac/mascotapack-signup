@@ -1,8 +1,10 @@
-import { useContext } from 'react';
+import {
+  useContext, useEffect, useState, useCallback,
+} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { produce } from 'immer';
 import SignupState from '../context/SignupState';
-import { useScroll } from './useScroll';
+import { useScroll } from './scroll';
 import Pet from '../schema/Pet';
 
 function getUniqueId() {
@@ -104,4 +106,58 @@ export function useDeliveryInformation() {
   };
 
   return { delivery, setDelivery, validate };
+}
+
+export function useOrder() {
+  const {
+    products, order, setOrder, delivery, person, pets,
+  } = useContext(SignupState);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const postOrder = useCallback(async () => {
+    try {
+      const response = await fetch(`${process.env.api}ordenes/start`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productIds: products.map((product) => product.id),
+          client: {
+            Nombre: person.getName(),
+            Email: person.getEmail(),
+            Telefono: person.getPhone(),
+            Domicilio: delivery.street,
+            Piso: delivery.floor,
+            Numero: delivery.number,
+            Barrio: delivery.neighbourhood,
+            InformacionAdicional: delivery.extra,
+          },
+          pets: Object.keys(pets).map((p) => ({
+            Nombre: pets[p].getName(),
+            Edad: pets[p].getAge(),
+            Animal: pets[p].getType(),
+          })),
+        }),
+      });
+      const o = await response.json();
+      setOrder(o);
+    } catch (err) {
+      setError(true);
+    }
+    setLoading(false);
+  }, [setOrder, order]);
+
+  useEffect(() => {
+    if (order) return;
+    postOrder();
+  }, [postOrder]);
+
+  return {
+    loading,
+    error,
+    order,
+  };
 }

@@ -2,7 +2,7 @@ import { useLazyQuery } from '@apollo/client';
 import { useEffect, useContext } from 'react';
 import _ from 'lodash';
 import { GET_PRODUCTS } from '../queries/product';
-import { usePets } from './signupStateForm';
+import { usePets } from './signup';
 import SignupState from '../context/SignupState';
 
 const mapData = (data) => {
@@ -15,6 +15,7 @@ const mapData = (data) => {
 
 export function useSumary() {
   const { summary, setSummary } = useContext(SignupState);
+  const { setProducts } = useContext(SignupState);
   const { pets, petUUIDs } = usePets();
   const [loadProducts, { loading, data }] = useLazyQuery(GET_PRODUCTS);
 
@@ -29,6 +30,7 @@ export function useSumary() {
   useEffect(() => {
     if (data && petUUIDs.length) {
       setSummary(mapData(data));
+      setProducts(data.products);
     } else {
       setSummary(null);
     }

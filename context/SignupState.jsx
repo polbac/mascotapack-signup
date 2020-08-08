@@ -9,8 +9,10 @@ export function SignupStateContextProvider({ children }) {
   const [petUUIDs, setPetUUIDs] = useState([]);
   const [pets, setPets] = useState({});
   const [person, setPerson] = useState(new Person());
+  const [products, setProducts] = useState([]);
   const [delivery, setDelivery] = useState(new Delivery());
   const [summary, setSummary] = useState(null);
+  const [order, setOrder] = useState(null);
 
   return (
     <SignupStateContext.Provider value={{
@@ -26,6 +28,10 @@ export function SignupStateContextProvider({ children }) {
       setDelivery,
       summary,
       setSummary,
+      order,
+      setOrder,
+      products,
+      setProducts,
     }}
     >
       {children}
